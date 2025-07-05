@@ -5,124 +5,144 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glass Heroes</title>
   <link rel="stylesheet" href="resources/css/index.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <!-- HEADER / HERO SECTION -->
   <header class="hero" id="home">
     <div class="container nav-bar">
-      <img src="resources/images/Glass Heroes without man.jpeg" alt="Glass Heroes Logo" class="logo">
+      <img src="resources/images/Glass Heroes without man.png" alt="Glass Heroes Logo" class="logo" data-aos="zoom-in-up" data-aos-delay="10">
       <nav aria-label="Main Navigation">
-        <span class="hamburger" id="hamburger">&#9776;</span>
+        <span class="hamburger" id="hamburger" data-aos="zoom-in-up" data-aos-delay="10">&#9776;</span>
+        <button class="close-menu" id="closeMenu" aria-label="Close menu">&times;</button>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#booking" class="btn">Book Now</a></li>
+          <li><a href="#home" data-aos="zoom-in-up" data-aos-delay="150">Home</a></li>
+          <li><a href="#services" data-aos="zoom-in-up" data-aos-delay="250">Services</a></li>
+          <li><a href="#pricing" data-aos="zoom-in-up" data-aos-delay="350">Pricing</a></li>
+          <li><a href="#about" data-aos="zoom-in-up" data-aos-delay="450">About</a></li>
+          <li><a href="#gallery" data-aos="zoom-in-up" data-aos-delay="550">Gallery</a></li>
+          <li><a href="#contact" data-aos="zoom-in-up" data-aos-delay="650">Contact</a></li>
         </ul>
       </nav>
     </div>
     <div class="hero-text">
-      <h1>Crystal Clear Views, Heroic Service.</h1>
-      <p>Professional window and gutter cleaning you can count on.</p>
-      <a href="#quote" class="btn">Get a Free Estimate</a>
+      <h1 data-aos="zoom-in-up" data-aos-delay="150"><strong>Crystal Clear Views, Heroic Service.</strong></h1>
+      <p data-aos="zoom-in-up" data-aos-delay="350">Professional window and gutter cleaning you can count on.</p>
+      <a href="#quote" class="btn" data-aos="flip-up" data-aos-delay="350">Get a Free Estimate</a>
     </div>
   </header>
 
   <!-- SERVICES SECTION -->
   <section id="services" class="section">
-    <h2>Our Services</h2>
-    <div class="card">
-      <h3>Window Cleaning</h3>
-      <ul>
-        <li>Outside windows (1st–3rd story)</li>
-        <li>Inside windows</li>
-        <li>Screen cleaning</li>
-        <li>Track and sill detailing</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Gutter Cleaning</h3>
-      <ul>
-        <li>Full gutter clearing</li>
-        <li>Downspout flushing</li>
-        <li>Removal of moss/leaves/debris</li>
-      </ul>
+    <h2><strong>S E R V I C E S</strong></h2>
+    <div class="services-card">
+      <div class="card" data-aos="fade-right" data-aos-duration="450" data-aos-delay="50">
+        <h3>Window Cleaning</h3>
+        <ul>
+          <li>Outside windows (1st–3rd story)</li>
+          <li>Inside windows</li>
+          <li>Screen cleaning</li>
+          <li>Track and sill detailing</li>
+        </ul>
+      </div>
+      <div class="card" data-aos="fade-right" data-aos-duration="650" data-aos-delay="50">
+        <h3>Gutter Cleaning</h3>
+        <ul>
+          <li>Full gutter clearing</li>
+          <li>Downspout flushing</li>
+          <li>Removal of moss/leaves/debris</li>
+        </ul>
+      </div>
+      <div class="card" data-aos="fade-right" data-aos-duration="650" data-aos-delay="50">
+        <h3>Gardening</h3>
+        <ul>
+          <li>Lawn mowing</li>
+          <li>Weed whacking</li>
+          <li>Yard clean-up</li>
+        </ul>
     </div>
   </section>
 
   <!-- PRICING SECTION -->
   <section id="pricing" class="section">
-    <h2>Pricing</h2>
+    <h2><strong>P R I C I N G</strong></h2>
     <div class="pricing-column">
-      <div class="card">
+      <div class="card" data-aos="fade-right" data-aos-duration="450" data-aos-delay="50">
         <h3>Window Cleaning</h3>
         <p>Outside 1st & 2nd story: $6/pane</p>
         <p>3rd story: $8/pane</p>
         <p>Inside panes: $4/pane</p>
       </div>
-      <div class="card">
-        <h3>Track Cleaning</h3>
+      <div class="card" data-aos="fade-right" data-aos-duration="650" data-aos-delay="50">
+        <h3>Gutter Cleaning</h3>
         <p>Light: $3</p>
         <p>Moderate: $4</p>
         <p>Heavy: $5–$7</p>
       </div>
-      <div class="card">
-        <h3>Gutter Cleaning</h3>
-        <p>Starting at $XX (or request a free quote)</p>
+      <div class="card" data-aos="fade-right" data-aos-duration="650" data-aos-delay="50">
+        <h3>Gardening</h3>
+        <p>Mowing: $20</p>
+        <p>Weed whacking: $15</p>
+        <p>Clean-up: $2 p/lb</p>
       </div>
-    </div>
   </section>
 
   <!-- GALLERY SECTION -->
   <section id="gallery" class="section">
-    <h2>Gallery</h2>
+    <h2><strong>G A L L E R Y</strong></h2>
     <div class="gallery-grid">
-      <img src="resources/images/mkjr_-2zUjvV0M9dQ-unsplash.jpg" alt="Window Cleaning" />
-      <img src="resources/images/raze-solar-Q2IyhjRmtXU-unsplash.jpg" alt="Gutter cleaning" />
-      <img src="resources/images/cdc-VRpjDw3WqqI-unsplash.jpg" alt="Window Cleaning" />
-      <img src="resources/images/immo-wegmann-sKiCvM6sPtU-unsplash.jpg" alt="Gutter Cleaning" />
-      <img src="resources/images/anthony-fomin-Apips1tJsXo-unsplash.jpg" alt="Yard Cleaning" />
-      <img src="resources/images/john-melara-uLE4B43ilrQ-unsplash.jpg" alt="Gutter Cleaning" />
-      <img src="resources/images/pro-pest-control-canberra-UjGSnzfDUl8-unsplash.jpg" alt="Spraying" />
-      <img src="resources/images/michael-smith-Ub-GUnTVFfw-unsplash.jpg" alt="Yard Cleaning" />
+      <img src="resources/images/mkjr_-2zUjvV0M9dQ-unsplash.jpg" alt="Window Cleaning" data-aos="flip-down" data-aos-delay="350" />
+      <img src="resources/images/raze-solar-Q2IyhjRmtXU-unsplash.jpg" alt="Gutter cleaning" data-aos="flip-down" data-aos-delay="650" />
+      <img src="resources/images/cdc-VRpjDw3WqqI-unsplash.jpg" alt="Window Cleaning" data-aos="flip-down" data-aos-delay="950"/>
+      <img src="resources/images/immo-wegmann-sKiCvM6sPtU-unsplash.jpg" alt="Gutter Cleaning" data-aos="flip-down" data-aos-delay="1250"/>
+      <img src="resources/images/anthony-fomin-Apips1tJsXo-unsplash.jpg" alt="Yard Cleaning" data-aos="flip-down" data-aos-delay="350"/>
+      <img src="resources/images/john-melara-uLE4B43ilrQ-unsplash.jpg" alt="Gutter Cleaning" data-aos="flip-down" data-aos-delay="650"/>
     </div>
   </section>
-
+  
   <!-- ABOUT SECTION -->
   <section id="about" class="section">
-    <div class="card">
-      <h2>About Glass Heroes</h2>
+    <div class="card" data-aos="zoom-in-down" data-aos-duration="250" data-aos-delay="50">
+      <h2><strong>A B O U T</strong><br><strong>U S</strong></h2>
       <p>Glass Heroes is a proud <strong>veteran-owned</strong> window and gutter cleaning company based in <strong>Spanaway, Washington</strong>. We’re committed to delivering top-tier service with a heroic touch—restoring shine to your windows and ensuring your gutters stay clear and problem-free. With a focus on reliability, affordability, and attention to detail, we take pride in serving our local community with professionalism and care.</p>
-      <p class="badge">🇺🇸 Veteran Owned & Operated</p>
     </div>
   </section>
 
   <!-- TESTIMONIALS SECTION -->
-  <section id="testimonials" class="section">
-    <h2>Testimonials</h2>
-    <blockquote>"Excellent work! Our windows have never looked better!"</blockquote>
-    <blockquote>"Fast and affordable – highly recommend!"</blockquote>
-    <div class="ratings">
-      <p>⭐⭐⭐⭐⭐ 4.9/5 on Google</p>
-      <p>⭐⭐⭐⭐⭐ 5.0/5 on Facebook</p>
-    </div>
-  </section>
+<section id="testimonials" class="section">
+  <h2><strong>TESTIMONIALS</strong></h2>
+
+  <blockquote data-aos="flip-up" data-aos-delay="250">
+    "Excellent work! Our windows have never looked better!"
+  </blockquote>
+
+  <blockquote data-aos="flip-up" data-aos-delay="350">
+    "Fast and affordable – highly recommend!"
+  </blockquote>
+
+  <div class="ratings" data-aos="fade-up" data-aos-delay="450">
+    <p>⭐⭐⭐⭐⭐ 4.9/5 on Google</p>
+    <p>⭐⭐⭐⭐⭐ 5.0/5 on Facebook</p>
+  </div>
+</section>
+
 
   <!-- BOOKING SECTION -->
   <section id="booking" class="section">
-    <h2>Schedule a Service</h2>
+    <h2><strong>Book a Service</strong></h2>
+
     <form>
-      <input type="text" placeholder="Name" required>
-      <input type="tel" placeholder="Phone" required>
-      <input type="email" placeholder="Email" required>
+      <input type="text" placeholder="Name">
+      <input type="tel" placeholder="Phone">
+      <input type="email" placeholder="Email">
       <input type="text" placeholder="Address">
-      <select>
+      <select required>
+        <option disabled selected>Select a Service</option>
         <option>Window Cleaning</option>
         <option>Gutter Cleaning</option>
       </select>
+
       <input type="text" placeholder="Preferred Day/Time">
       <textarea placeholder="Notes (e.g., tall windows, heavy buildup)"></textarea>
       <button type="submit" class="btn">Request Estimate</button>
@@ -131,50 +151,66 @@
 
   <!-- CONTACT SECTION -->
   <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>📞 <a href="tel:+123456789">Call Now</a></p>
-    <p>📧 <a href="mailto:info@glassheroes.com">Email Us</a></p>
-    <p>⏰ Mon–Sat: 8am–6pm</p>
-    <p>📍 Spanaway, Puyallup, South Hill, Graham</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86927.20614184868!2d-122.50897759590373!3d47.08975433352877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54910038c644c3b9%3A0xd45efe1c35b0fb3!2sSpanaway%2C%20WA%2C%20USA!5e0!3m2!1sen!2sza!4v1751595988348!5m2!1sen!2sza" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <h2><strong>C O N T A C T</strong><br><strong>U S</strong></h2>
+    <h3 data-aos="zoom-in-down" data-aos-delay="350">📞 <a href="tel:+123456789"><strong>015 491 0806</strong></a></h2>
+    <h3 data-aos="zoom-in-down" data-aos-delay="350">📧 <a href="mailto:info@glassheroes.com"><strong>info@glassheroes.com</strong></a></h3>
+    <h3 data-aos="zoom-in-down" data-aos-delay="350">⏰ <strong>Mon–Sat: 8am–6pm</strong></h3>
+    <h3 data-aos="zoom-in-down" data-aos-delay="350">📍 <strong>Spanaway, Puyallup, South Hill, Graham</strong></h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86927.20614184868!2d-122.50897759590373!3d47.08975433352877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54910038c644c3b9%3A0xd45efe1c35b0fb3!2sSpanaway%2C%20WA%2C%20USA!5e0!3m2!1sen!2sza!4v1751595988348!5m2!1sen!2sza" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-aos="zoom-in-down" data-aos-delay="600"></iframe>
   </section>
 
   <!-- WHY CHOOSE US -->
   <section class="section">
-    <h2>Why Choose Glass Heroes?</h2>
+    <h2><strong>Why Choose Glass Heroes?</strong></h2>
     <ul class="features">
-      <li>✅ Locally Owned</li>
-      <li>✅ Fully Insured</li>
-      <li>✅ 100% Satisfaction Guarantee</li>
-      <li>✅ Quick Response Time</li>
-      <li>✅ Affordable & Reliable</li>
+      <li data-aos="zoom-in-down" data-aos-delay="200">✅ Locally Owned</li>
+      <li data-aos="zoom-in-down" data-aos-delay="300">✅ Fully Insured</li>
+      <li data-aos="zoom-in-down" data-aos-delay="400">✅ 100% Satisfaction Guarantee</li>
+      <li data-aos="zoom-in-down" data-aos-delay="500">✅ Quick Response Time</li>
+      <li data-aos="zoom-in-down" data-aos-delay="600">✅ Affordable & Reliable</li>
     </ul>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <img src="resources/images/Glass Heroes without man.jpeg" alt="Glass Heroes Logo" />
+    <img src="resources/images/Glass Heroes without man.png" alt="Glass Heroes Logo" />
     <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
-      <a href="#booking">Book Now</a>
+      <a href="#home"><strong>Home</strong></a>
+      <a href="#services"><strong>Services</strong></a>
+      <a href="#contact"><strong>Contact</strong></a>
+      <a href="#booking"><strong>Book Now</strong></a>
     </nav>
-    <p>Mon–Sat: 8am–6pm</p>
+    <p><strong>Mon–Sat: 8am–6pm</strong></p>
     <div class="socials">
-      <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-      <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+        <a href="https://facebook.com" class="socials facebook" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://instagram.com" class="socials instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
     </div>
     <p>&copy; 2025 Glass Heroes</p>
+    <p>JDT-Software &spades;</p>
   </footer>
 
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  const closeMenu = document.getElementById('closeMenu');
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    closeMenu.style.display = 'block';
+  });
+
+  closeMenu.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+    closeMenu.style.display = 'none';
+  });
+  </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
   </script>
 </body>
 </html>
