@@ -6,6 +6,10 @@
   font-family: 'Segoe UI', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #f9f9f9;
   color: #222;
@@ -22,18 +26,15 @@ body {
 }
 
 /* Navigation */
-.nav-bar ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  background: rgba(0, 168, 255, 0.10); /* subtle light blue background */
-  border-radius: 30px;
-  padding: 10px 30px;
-  box-shadow: 0 4px 24px 0 rgba(0,168,255,0.18); /* light blue glow */
+.nav-bar {
+  position: relative; /* Ensure dropdown is positioned relative to nav-bar */
+  z-index: 1002;
 }
 
 .nav-bar ul li a,
-.nav-bar .btn {
+.nav-bar .btn,
+.nav-links li a,
+.nav-links .btn {
   text-decoration: none;
   color: #0077c0;
   font-weight: bold;
@@ -41,11 +42,12 @@ body {
   border-radius: 22px;
   background: #e0f7ff;
   transition: 
-    background 0.2s,
-    color 0.2s,
-    box-shadow 0.2s;
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s;
   box-shadow: 0 2px 8px rgba(0,168,255,0.08);
   display: inline-block;
+  border: 1px solid #000; /* Add a black border to nav buttons */
 }
 
 .nav-bar ul li a:hover,
@@ -95,6 +97,8 @@ body {
     color 0.2s,
     box-shadow 0.2s;
   display: inline-block;
+  border: 1px solid #000; /* Add a black border to nav buttons */
+  transition: all 0.3s ease;
 }
 
 .hero .btn:hover {
@@ -280,7 +284,7 @@ iframe {
 .service-card {
   background: #fff;
   border-radius: 18px;
-  box-shadow: 0 4px 24px 0 rgba(0,168,255,0.10);
+  box-shadow: 0 4px 24px 0 rgba(0, 148, 223, 0.1);
   padding: 32px 28px 24px 28px;
   max-width: 340px;
   min-width: 260px;
@@ -325,31 +329,96 @@ iframe {
 
 .card .badge {
   margin-top: 20px;
-  display: inline-block;
-  background-color: #0077c0;
-  color: white;
+  display: inline-block; /* Remove this if keeping block below */
+  background: linear-gradient(90deg, red, white, blue, indigo, violet);
+  color: rgb(0, 0, 0);
   padding: 10px 16px;
   border-radius: 8px;
   font-weight: bold;
+  font-size: 1.2rem;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  /* Center the badge horizontally */
-  display: block;
+  display: block; /* Keep this for horizontal centering */
+  background-size: 200% 200%;
+  transition: background-position 0.5s ease, transform 0.3s ease;
+  border: #000 solid 2px; /* Add a black border */
 }
 
+
+
 .card {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 25px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin: 20px 0;
+  box-shadow:  -14px 14px 28px #d6d6d6,
+             14px -14px 28px #428bb8;
+  margin: 35px 0;
 }
 
 #about .card {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+/* Desktop nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  background: rgba(0, 168, 255, 0.10);
+  border-radius: 30px;
+  padding: 10px 30px;
+  box-shadow: 0 4px 24px 0 rgba(0,168,255,0.18);
+  transition: all 0.3s ease;
+}
+
+/* Hamburger Icon Styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+  margin-left: 10px;
+}
+.hamburger span {
+  display: block;
+  height: 4px;
+  width: 28px;
+  background: #0077c0;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Mobile styles */
+@media (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+  .nav-links {
+    display: none !important;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: #fff;
+    box-shadow: 0 4px 24px 0 rgba(0,168,255,0.18);
+    border-radius: 18px;
+    padding: 20px 30px;
+    z-index: 1001;
+    min-width: 180px;
+  }
+  .nav-links.active {
+    display: flex !important;
+  }
 }
 
 /* Responsive Container Widths */
@@ -432,4 +501,55 @@ iframe {
   .card {
     padding: 18px 8px;
   }
+}
+
+/* Additional styles for hamburger menu and body blur effect */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+.hamburger span {
+  transition: 0.3s;
+}
+body.nav-blur::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,168,255,0.08);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.socials {
+  display: inline-block;
+  margin: 10px;
+}
+
+.socials i {
+  font-size: 32px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.socials.facebook i {
+  color: #3b5998;
+}
+
+.socials.facebook i:hover {
+  color: #1d3b8b;
+  transform: scale(1.2);
+}
+
+.socials.instagram i {
+  color: #E1306C;
+}
+
+.socials.instagram i:hover {
+  color: #C13584;
+  transform: scale(1.2);
 }
