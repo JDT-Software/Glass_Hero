@@ -1,38 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
-  const nav = document.querySelector('.nav-links');
+  const navLinks = document.querySelector('.nav-links');
 
   function toggleMenu() {
-    nav.classList.toggle('active');
+    navLinks.classList.toggle('active');
     hamburger.classList.toggle('open');
-    document.body.classList.toggle('nav-blur', nav.classList.contains('active'));
+    document.body.classList.toggle('nav-blur', navLinks.classList.contains('active'));
   }
 
-  hamburger.addEventListener('click', toggleMenu);
+  // Toggle menu on hamburger click
+  if (hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+  }
+  
 
-  // Close menu on nav link click & smooth scroll
+  // Smooth scroll and close menu on nav link click
   document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
+    link.addEventListener('click', event => {
+      event.preventDefault();
       const targetId = link.getAttribute('href').slice(1);
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       }
-      nav.classList.remove('active');
+
+      // Close the menu after navigating
+      navLinks.classList.remove('active');
       hamburger.classList.remove('open');
       document.body.classList.remove('nav-blur');
     });
   });
 
   // Close menu if clicking outside nav or hamburger
-  document.addEventListener('click', e => {
+  document.addEventListener('click', event => {
     if (
-      nav.classList.contains('active') &&
-      !nav.contains(e.target) &&
-      !hamburger.contains(e.target)
+      navLinks.classList.contains('active') &&
+      !navLinks.contains(event.target) &&
+      !hamburger.contains(event.target)
     ) {
-      nav.classList.remove('active');
+      navLinks.classList.remove('active');
       hamburger.classList.remove('open');
       document.body.classList.remove('nav-blur');
     }

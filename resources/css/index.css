@@ -345,8 +345,6 @@ iframe {
   border: #000 solid 2px; /* Add a black border */
 }
 
-
-
 .card {
   background-color: #ffffff;
   border-radius: 12px;
@@ -387,7 +385,9 @@ iframe {
   cursor: pointer;
   z-index: 1002;
   margin-left: 10px;
+  transition: transform 0.3s ease;
 }
+
 .hamburger span {
   display: block;
   height: 4px;
@@ -395,7 +395,20 @@ iframe {
   background: #0077c0;
   margin: 4px 0;
   border-radius: 2px;
-  transition: 0.3s;
+  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger open state */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* Mobile styles */
@@ -503,19 +516,7 @@ iframe {
   }
 }
 
-/* Additional styles for hamburger menu and body blur effect */
-.hamburger.open span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
-}
-.hamburger.open span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
-}
-.hamburger span {
-  transition: 0.3s;
-}
+/* Additional styles for body blur effect */
 body.nav-blur::before {
   content: "";
   position: fixed;
