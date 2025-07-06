@@ -29,7 +29,7 @@
     <div class="hero-text">
       <h1 data-aos="zoom-in-up" data-aos-delay="150"><strong>Crystal Clear Views, Heroic Service.</strong></h1>
       <p data-aos="zoom-in-up" data-aos-delay="350">Professional window and gutter cleaning you can count on.</p>
-      <a href="#quote" class="btn" data-aos="flip-up" data-aos-delay="350">Get a Free Estimate</a>
+      <a href="#booking" class="btn" data-aos="flip-up" data-aos-delay="350">Get a Free Estimate</a>
     </div>
   </header>
 
@@ -133,18 +133,108 @@
     <h2><strong>Book a Service</strong></h2>
 
     <form>
-      <input type="text" placeholder="Name">
-      <input type="tel" placeholder="Phone">
-      <input type="email" placeholder="Email">
-      <input type="text" placeholder="Address">
-      <select required>
-        <option disabled selected>Select a Service</option>
-        <option>Window Cleaning</option>
-        <option>Gutter Cleaning</option>
-      </select>
+      <div class="form-field">
+        <input 
+        type="name" 
+        id="name" 
+        placeholder=" " 
+        required>
+       <label for="name"><strong>Name</strong></label>
+       <span class="error-message"></span>
+      </div>
 
-      <input type="text" placeholder="Preferred Day/Time">
-      <textarea placeholder="Notes (e.g., tall windows, heavy buildup)"></textarea>
+      <div class="form-field phone-field">
+        <div class="country-code">
+          <select id="countryCode" required>
+            <option value="+27"><strong>+27 (ZA)</strong></option>
+            <option value="+1">+1 (US)</option>
+            <option value="+44">+44 (UK)</option>
+            <option value="+61">+61 (AU)</option>
+            <!-- Add more country codes as needed -->
+          </select>
+        </div>
+        <div class="phone-input">
+          <input 
+            type="tel" 
+            id="phone" 
+            placeholder=" " 
+            pattern="[0-9]{9,}"
+            title="Please enter a valid phone number"
+            required
+          >
+          <label for="phone"><strong>Phone Number</strong></label>
+          <span class="error-message"></span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <input 
+        type="email" 
+        id="email" 
+        placeholder=" " 
+        required>
+        <label for="email"><strong>Email</strong></label>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="form-field">
+        <input 
+        type="address" 
+        id="address" 
+        placeholder=" " 
+        required>
+       <label for="address"><strong>Address</strong></label>
+       <span class="error-message"></span>
+      </div>
+
+      <div class="form-field">
+        <select id="service" required>
+          <option value="" selected disabled></option>
+          <option>Window Cleaning</option>
+          <option>Gutter Cleaning</option>
+          <option>Gardening Services</option>
+        </select>
+        <label for="service"><strong>Select a Service</strong></label>
+      </div>
+
+      <div class="form-field datetime-field">
+        <div class="date-input">
+          <input 
+            type="date" 
+            id="preferred-date" 
+            placeholder=" "
+            min=""  <!-- Will be set by JavaScript to today's date -->  
+          <label for="preferred-date"><strong>Preferred Date</strong></label>
+        </div>
+        <div class="time-input">
+          <select id="preferred-time" required>
+            <option value="" disabled selected></option>
+            <option value="08:00">8:00 AM</option>
+            <option value="09:00">9:00 AM</option>
+            <option value="10:00">10:00 AM</option>
+            <option value="11:00">11:00 AM</option>
+            <option value="12:00">12:00 PM</option>
+            <option value="13:00">1:00 PM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="15:00">3:00 PM</option>
+            <option value="16:00">4:00 PM</option>
+            <option value="17:00">5:00 PM</option>
+          </select>
+          <label for="preferred-time"><strong>Preferred Time</strong></label>
+        </div>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="form-field">
+        <input 
+        type="notes" 
+        id="notes" 
+        placeholder=" " 
+        required>
+       <label for="notes"><strong>Additional Notes</strong></label>
+       <span class="error-message"></span>
+      </div>
+
       <button type="submit" class="btn">Request Estimate</button>
     </form>
   </section>
@@ -207,6 +297,13 @@
     navLinks.classList.remove('active');
     closeMenu.style.display = 'none';
   });
+
+  // Set minimum date to today
+document.addEventListener('DOMContentLoaded', function() {
+  const dateInput = document.getElementById('preferred-date');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+});
   </script>
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
@@ -214,6 +311,8 @@
   </script>
 </body>
 </html>
-< ! - -   r e d e p l o y   - - >  
- < ! - -   r e d e p l o y   - - >  
- <!-- redeploy -->
+< ! - -   r e d e p l o y   - - > 
+ 
+ < ! - -   r e d e p l o y   - - > 
+ 
+<!-- redeploy -->
