@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Form submission handler - REAL API CONNECTION
+  // Form submission handler - LIVE API CONNECTION
   if (bookingForm) {
     bookingForm.addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -204,11 +204,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
       console.log('Form data collected:', formData);
       
-      // Send to backend API
+      // Send to backend API - UPDATED TO USE LIVE URL
       try {
-        console.log('Sending data to backend...');
+        console.log('Sending data to live backend...');
         
-        const response = await fetch('http://localhost:5000/api/bookings', {
+        const response = await fetch('https://glassheroes-service.onrender.com/api/bookings', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show different error messages based on error type
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-          showErrorModal('Cannot connect to server. Please make sure the backend is running on http://localhost:5000');
+          showErrorModal('Cannot connect to server. Please check your internet connection and try again.');
         } else {
           showErrorModal('Error submitting booking: ' + error.message);
         }
