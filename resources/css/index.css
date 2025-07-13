@@ -33,46 +33,25 @@ body {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
+  position: relative; /* Add position relative */
 }
 
 /* Navigation */
 .nav-bar {
-  position: relative; /* Ensure dropdown is positioned relative to nav-bar */
+  position: relative;
   z-index: 1002;
-}
-
-.nav-bar ul li a,
-.nav-bar .btn,
-.nav-links li a,
-.nav-links .btn {
-  text-decoration: none;
-  color: var(--navy);
-  font-weight: bold;
-  padding: 10px 22px;
-  border-radius: 22px;
-  background: #428bb8;
-  transition: 
-    background 0.3s,
-    color 0.3s,
-    box-shadow 0.3s;
-  box-shadow: 0 2px 8px rgba(68,50,38,0.08);
-  display: inline-block;
-}
-
-.nav-bar ul li a:hover,
-.nav-bar .btn:hover,
-.nav-links li a:hover {
-  background: var(--accent1);
-  color: var(--light);
-  box-shadow: 0 4px 16px 0 rgba(68,50,38,0.25);
+  width: 100%; /* Ensure full width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  width: 200px;       /* Allows the logo to maintain its aspect ratio */
-  height: 150px;       /* Increased from 50px */
-  margin-bottom: 20px; /* Adds spacing below the logo */
-  display: block;      /* Ensures it behaves as a block element */
-  margin-left: auto;   /* Centers horizontally if needed */
+  width: 200px;
+  height: 150px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -102,16 +81,12 @@ body {
   text-decoration: none;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(0,168,255,0.08);
-  transition:
-    background 0.2s,
-    color 0.2s,
-    box-shadow 0.2s;
-  display: inline-block;
   transition: all 0.3s ease;
+  display: inline-block;
 }
 
 .hero .btn:hover {
-  background:#428bb8;
+  background: #428bb8;
   color: #fff;
   transition: all 0.3s ease;
 }
@@ -151,10 +126,10 @@ ul {
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
-  will-change: transform; /* Optimize GPU acceleration */
-  transform: translateZ(0); /* Force GPU acceleration */
-  backface-visibility: hidden; /* Reduce painting */
-  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1); /* Optimized animation curve */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 .gallery-grid img:hover {
@@ -165,11 +140,11 @@ ul {
 
 /* Gallery Section Title */
 #gallery h2 {
-  color: var(--primary);
+  color: var(--navy);
   margin-bottom: 30px;
   font-size: 2rem;
   text-align: center;
-  border-bottom: 2px solid var(--secondary);
+  border-bottom: 2px solid var(--sage);
   padding-bottom: 10px;
   max-width: 400px;
   margin-left: auto;
@@ -189,34 +164,30 @@ input, select, textarea, button {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
-  border: #09b4ac solid 1px; /* Add a black border to form elements */
+  border: #09b4ac solid 1px;
 }
 
 button.btn {
   background-color: #428bb8;
-  color: var(--navy);
-  padding: 10px 22px;
+  color: white;
+  padding: 15px 30px;
+  border: none;
   border-radius: 22px;
-  text-decoration: none;
   font-weight: bold;
-  box-shadow: 0 2px 8px rgba(0,168,255,0.08);
-  transition:
-    background 0.2s,
-    color 0.2s,
-    box-shadow 0.2s;
-  display: inline-block;
+  cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 16px;
 }
 
 button.btn:hover {
-  background:#428bb8;
+  background: var(--teal);
   color: #fff;
-  transition: all 0.3s ease;
+  transform: translateY(-2px);
 }
 
 .form-field {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .form-field input,
@@ -229,6 +200,7 @@ button.btn:hover {
   font-size: 16px;
   background: transparent;
   outline: none;
+  color: var(--slate);
 }
 
 .form-field label {
@@ -237,45 +209,196 @@ button.btn:hover {
   top: 50%;
   transform: translateY(-50%);
   background: var(--light);
-  padding: 0 5px;
+  padding: 0 8px;
   color: var(--slate);
-  transition: 
-    transform 0.3s ease,
-    color 0.3s ease,
-    top 0.3s ease,
-    font-size 0.3s ease;
+  transition: all 0.3s ease;
   pointer-events: none;
+  z-index: 2;
+  font-size: 16px;
 }
 
-/* Floating label animation */
-.form-field input:focus ~ label,
-.form-field select:focus ~ label,
-.form-field textarea:focus ~ label,
-.form-field input:not(:placeholder-shown) ~ label,
-.form-field select:not(:placeholder-shown) ~ label,
-.form-field textarea:not(:placeholder-shown) ~ label {
-  top: 0;
-  transform: translateY(-50%) scale(0.9);
+/* Floating label when input is focused or has content */
+.form-field input:focus + label,
+.form-field input:not(:placeholder-shown) + label,
+.form-field textarea:focus + label,
+.form-field textarea:not(:placeholder-shown) + label {
+  top: -1px;
+  transform: translateY(-50%);
+  font-size: 12px;
   color: var(--teal);
+  font-weight: bold;
 }
 
-/* Active state for inputs */
+/* Special handling for select elements */
+.form-field select:focus + label,
+.form-field select:not([value=""]) + label {
+  top: -1px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--teal);
+  font-weight: bold;
+}
+
+/* Input focus styles */
 .form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
+.form-field textarea:focus,
+.form-field select:focus {
   border-color: var(--teal);
   box-shadow: 0 0 0 1px var(--teal);
 }
 
-/* Special handling for textarea label */
-.form-field textarea ~ label {
-  top: 25px;
-  transform: translateY(0);
+/* Phone field specific styles */
+.phone-field {
+  display: flex;
+  gap: 10px;
 }
 
-.form-field textarea:focus ~ label,
-.form-field textarea:not(:placeholder-shown) ~ label {
-  top: -10px;
+.country-code {
+  flex: 0 0 100px;
+}
+
+.country-code select {
+  width: 100%;
+  height: 100%;
+  padding: 15px 10px;
+  border: 2px solid var(--sage);
+  border-radius: 5px;
+  background: var(--light);
+  color: var(--slate);
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 30px;
+}
+
+.phone-input {
+  flex: 1;
+  position: relative;
+}
+
+/* Date and time field styles */
+.datetime-field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.date-input,
+.time-input {
+  position: relative;
+}
+
+/* Special handling for date inputs */
+.form-field input[type="date"] + label {
+  top: -1px;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: var(--teal);
+  font-weight: bold;
+}
+
+/* Enhanced date picker styling for better visibility */
+input[type="date"] {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid var(--sage);
+  border-radius: 5px;
+  font-family: inherit;
+  color: var(--slate);
+  cursor: pointer;
+  background: var(--light);
+}
+
+/* Style the calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.8;
+  filter: invert(0.2) brightness(0.7); /* Darker calendar icon */
+  transition: opacity 0.2s;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  filter: invert(0) brightness(0.5); /* Even darker on hover */
+}
+
+/* Style the actual calendar dropdown */
+input[type="date"]::-webkit-datetime-edit {
+  color: var(--navy);
+  font-weight: 500;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  color: var(--slate);
+  padding: 0 2px;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field {
+  color: var(--navy);
+  font-weight: bold;
+}
+
+input[type="date"]::-webkit-datetime-edit-day-field {
+  color: var(--navy);
+  font-weight: bold;
+}
+
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: var(--navy);
+  font-weight: bold;
+}
+
+/* Focus state for better accessibility */
+input[type="date"]:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal);
+  outline: none;
+}
+
+/* Style the calendar popup (limited browser support) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3e%3c/rect%3e%3cline x1='16' y1='2' x2='16' y2='6'%3e%3c/line%3e%3cline x1='8' y1='2' x2='8' y2='6'%3e%3c/line%3e%3cline x1='3' y1='10' x2='21' y2='10'%3e%3c/line%3e%3c/svg%3e") no-repeat center;
+  background-size: 18px 18px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Additional styling for better contrast */
+input[type="date"] {
+  color: var(--navy);
+  background-color: #fff;
+  border: 2px solid var(--sage);
+}
+
+input[type="date"]:focus {
+  background-color: #fff;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal);
+}
+
+/* Error message styles */
+.error-message {
+  color: #ff4444;
+  font-size: 0.8rem;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  display: block;
 }
 
 /* Testimonials */
@@ -310,19 +433,6 @@ blockquote {
   transition: box-shadow 0.2s;
 }
 
-.ratings p:first-child {
-  border-left-color: var(--accent2); /* Previously Google blue */
-}
-
-.ratings p:last-child {
-  border-left-color: var(--accent1); /* Previously Facebook blue */
-}
-
-.ratings p span {
-  font-size: 1.3rem;
-  margin-right: 8px;
-}
-
 /* Features List */
 .features {
   display: flex;
@@ -353,11 +463,23 @@ blockquote {
   color: var(--light);
   margin: 0 10px;
   text-decoration: none;
+  display: inline-block; /* Required for transform to work */
+  padding: 8px 16px; /* Keep padding for click area */
+  transition: 
+    transform 0.3s ease,
+    color 0.3s ease !important;
 }
 
-.footer .socials img {
-  height: 30px;
-  margin: 0 5px;
+/* Hover effect - makes text rise up and change color only */
+.footer nav a:hover {
+  transform: translateY(-5px) !important; /* Rise up by 5px */
+  color: var(--teal) !important; /* Change color on hover */
+}
+
+/* Optional: Add a subtle shadow on hover for more depth */
+.footer nav a:hover {
+  transform: translateY(-5px);
+  color: var(--teal);
 }
 
 .footer img {
@@ -396,7 +518,7 @@ iframe {
 }
 
 .services-card h3 {
-  color: var(--primary);
+  color: var(--navy);
   margin-bottom: 15px;
   font-size: 1.5rem;
 }
@@ -416,157 +538,229 @@ iframe {
   content: "✓";
   position: absolute;
   left: 0;
-  color: var(--secondary);
+  color: var(--teal);
 }
 
-/* Desktop nav links */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  background: rgba(0, 168, 255, 0.10);
-  border-radius: 30px;
-  padding: 10px 30px;
-  box-shadow: 0 4px 24px 0 rgba(0,168,255,0.18);
-  transition: all 0.3s ease;
-}
-
-/* Hamburger Icon Styles */
+/* Fixed Hamburger Menu Styles */
 .hamburger {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 36px;
-  height: 36px;
+  position: fixed; /* Fixed positioning to stay in place */
+  top: 15px; /* Very close to the top */
+  right: 15px; /* Very close to the right edge */
+  width: 40px;
+  height: 40px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 1002;
-  margin-left: 10px;
-  transition: transform 0.3s ease;
+  z-index: 1003; /* High z-index to stay above everything */
+  transition: all 0.3s ease;
 }
 
 .hamburger span {
   display: block;
-  height: 4px;
-  width: 28px;
-  background: var(--slate);
-  margin: 4px 0;
+  position: absolute;
+  height: 3px;
+  width: 30px;
+  background: white; /* Change hamburger lines to white */
   border-radius: 2px;
-  transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
 }
 
-/* Hamburger open state */
-.hamburger.open span:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+.hamburger span:nth-child(1) {
+  top: 10px;
 }
 
-.hamburger.open span:nth-child(2) {
+.hamburger span:nth-child(2) {
+  top: 18px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 26px;
+}
+
+/* Hamburger to X animation - Keep X the same color (slate) */
+.hamburger.active span:nth-child(1) {
+  top: 18px;
+  transform: translateX(-50%) rotate(45deg);
+  background: var(--slate); /* X stays slate color */
+}
+
+.hamburger.active span:nth-child(2) {
   opacity: 0;
 }
 
-.hamburger.open span:nth-child(3) {
-  transform: translateY(-9px) rotate(-45deg);
+.hamburger.active span:nth-child(3) {
+  top: 18px;
+  transform: translateX(-50%) rotate(-45deg);
+  background: var(--slate); /* X stays slate color */
 }
 
-/* Close button styles */
-.close-menu {
-  display: none;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 2px;
-  z-index: 1003;
+/* Desktop nav links - All buttons have same hover effect */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  background: rgba(0, 168, 255, 0.10);
+  border-radius: 30px;
+  padding: 15px 25px;
+  box-shadow: 0 4px 24px 0 rgba(0,168,255,0.18);
+  transition: all 0.3s ease;
 }
 
-/* Show close button when menu is active */
-@media (max-width: 900px) {
-  .nav-links.active + .close-menu {
-    display: block;
+.nav-links li {
+  margin: 0 5px;
+}
+
+/* ALL desktop nav links styling - IDENTICAL for every button */
+.nav-links li a {
+  text-decoration: none;
+  color: var(--navy);
+  font-weight: bold;
+  padding: 10px 22px;
+  border-radius: 22px;
+  background: #428bb8;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0,168,255,0.08);
+  /* Same transition for ALL buttons - same timing */
+  transition: 
+    color 0.8s ease,
+    background-color 0.8s ease,
+    transform 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+/* Hover effect - applies to ALL desktop navigation buttons identically */
+.nav-links li a:hover {
+  background: #428bb8;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,168,255,0.25);
+  /* Same transition for ALL buttons on hover - same timing */
+  transition: 
+    color 0.8s ease,
+    background-color 0.8s ease,
+    transform 0.8s ease,
+    box-shadow 0.8s ease;
+}
+
+/* Remove any conflicting styles - Make sure these don't exist elsewhere */
+/*
+.nav-links li:nth-child(1) a { ... }
+.nav-links li:nth-child(2) a { ... }
+.nav-links li:nth-child(3) a { ... }
+.nav-links li:nth-child(4) a { ... }
+.nav-links li:nth-child(5) a { ... }
+.nav-links li:nth-child(6) a { ... }
+*/
+
+/* Enhanced button spacing for desktop */
+@media (min-width: 901px) {
+  .nav-links {
+    gap: 10px;
+  }
+  
+  .nav-links li {
+    margin: 0 8px;
+  }
+  
+  /* Ensure all desktop buttons have identical behavior */
+  .nav-links li a {
+    /* Force consistent styling on desktop */
+    transition: 
+      color 0.8s ease,
+      background-color 0.8s ease,
+      transform 0.8s ease,
+      box-shadow 0.8s ease !important;
+  }
+  
+  .nav-links li a:hover {
+    /* Force consistent hover styling on desktop */
+    transition: 
+      color 0.8s ease,
+      background-color 0.8s ease,
+      transform 0.8s ease,
+      box-shadow 0.8s ease !important;
   }
 }
 
-/* Mobile styles */
+/* Mobile Navigation Styles */
 @media (max-width: 900px) {
   .hamburger {
-    display: flex;
+    display: block !important;
   }
+  
   .nav-links {
-    display: none !important;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 280px;
+    background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
     flex-direction: column;
-    position: absolute;
-    top: 80px;
-    right: 20px;
-    background: #cccccc;
-    box-shadow: 0 4px 24px 0 rgba(17, 32, 60, 0.15);
-    border-radius: 18px;
-    padding: 20px 30px;
-    z-index: 1001;
-    min-width: 180px;
-  }
-  .nav-links.active {
-    display: flex !important;
-  }
-}
-
-/* Responsive Container Widths */
-@media (min-width: 475px) {
-  .container {
-    max-width: 475px;
-  }
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
-/* Responsive adjustments for layout and cards */
-@media (max-width: 900px) {
-  .services-cards,
-  .pricing-cards {
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px; /* Reduced from 25px to 15px */
+    padding: 60px 20px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border-radius: 0;
   }
-  .service-card,
-  .pricing-card {
-    max-width: 95%;
-    min-width: 0;
+
+  .nav-links.active {
+    right: 0;
   }
-  .gallery-grid {
-    grid-template-columns: 1fr 1fr;
+
+  .nav-links li {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.3s ease;
+    width: 100%;
+    margin: 5px 0; /* Reduced from 8px to 5px */
+  }
+
+  .nav-links.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ALL buttons have EXACT same delay - no cascading effect */
+  .nav-links.active li:nth-child(1) { transition-delay: 0.15s; }
+  .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+  .nav-links.active li:nth-child(3) { transition-delay: 0.15s; }
+  .nav-links.active li:nth-child(4) { transition-delay: 0.15s; }
+  .nav-links.active li:nth-child(5) { transition-delay: 0.15s; }
+  .nav-links.active li:nth-child(6) { transition-delay: 0.15s; }
+
+  .nav-links li a {
+    font-size: 1.1rem;
+    padding: 10px 20px; /* Reduced from 12px to 10px */
+    border-radius: 20px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    /* Same slow transition for mobile */
+    transition: 
+      color 0.8s ease,
+      background-color 0.8s ease,
+      transform 0.8s ease,
+      box-shadow 0.8s ease;
+  }
+
+  .nav-links li a:hover {
+    background: var(--teal);
+    color: var(--light);
+    transform: translateX(5px);
+    /* Same slow transition for mobile hover */
+    transition: 
+      color 0.8s ease,
+      background-color 0.8s ease,
+      transform 0.8s ease,
+      box-shadow 0.8s ease;
   }
 }
 
@@ -574,11 +768,6 @@ iframe {
   .container {
     flex-direction: column;
     padding: 10px;
-  }
-  .nav-bar ul {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px 10px;
   }
   .gallery-grid {
     grid-template-columns: 1fr;
@@ -590,10 +779,23 @@ iframe {
   .section {
     padding: 30px 5px;
   }
-  .service-card,
-  .pricing-card,
-  .card {
-    padding: 18px 8px;
+  .datetime-field {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .contact-item {
+    padding: 15px;
+  }
+  
+  .contact-item i {
+    font-size: 20px;
   }
 }
 
@@ -623,7 +825,7 @@ body.nav-blur::before {
 }
 
 .socials.facebook i:hover {
-  color: var(--accent1);
+  color: var(--teal);
   transform: scale(1.2);
 }
 
@@ -632,7 +834,7 @@ body.nav-blur::before {
 }
 
 .socials.instagram i:hover {
-  color: var(--accent2);
+  color: var(--teal);
   transform: scale(1.2);
 }
 
@@ -658,10 +860,10 @@ body.nav-blur::before {
 }
 
 .pricing-column h3 {
-  color: var(--primary);
+  color: var(--navy);
   margin-bottom: 20px;
   font-size: 1.5rem;
-  border-bottom: 2px solid var(--secondary);
+  border-bottom: 2px solid var(--sage);
   padding-bottom: 10px;
 }
 
@@ -692,10 +894,10 @@ body.nav-blur::before {
 }
 
 #about h2 {
-  color: var(--primary);
+  color: var(--navy);
   margin-bottom: 20px;
   font-size: 2rem;
-  border-bottom: 2px solid var(--secondary);
+  border-bottom: 2px solid var(--sage);
   padding-bottom: 10px;
   text-align: center;
 }
@@ -707,137 +909,409 @@ body.nav-blur::before {
   color: var(--slate);
 }
 
-#about .badge {
-  display: inline-block;
-  background: var(--teal);
-  color: var(--light);
-  padding: 10px 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  margin-top: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
 #about strong {
   color: var(--navy);
 }
 
-#services {
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
+/* =================================================================
+   MODAL STYLES - HIGH PRIORITY - DO NOT OVERRIDE
+   ================================================================= */
+
+/* Base modal overlay */
+.modal {
+  display: none !important;
+  position: fixed !important;
+  z-index: 9999 !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(5px) !important;
 }
 
-#services::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('../images/jr-harris-auOH3qZnF-E-unsplash.jpg');  /* Changed path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.8;
-  z-index: -1;
-  animation: fadeIn 2s ease-in;
+/* Modal content container */
+.modal-content {
+  background-color: var(--light) !important;
+  margin: 15% auto !important;
+  padding: 30px !important;
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+  width: 90% !important;
+  max-width: 450px !important;
+  text-align: center !important;
+  animation: modalSlideIn 0.3s ease-out !important;
 }
 
-@keyframes fadeIn {
+/* Modal slide-in animation */
+@keyframes modalSlideIn {
   from {
+    transform: translateY(-50px);
     opacity: 0;
   }
   to {
-    opacity: 0.1;
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
-/* Update services cards to ensure they stand out against background */
-.services-card .card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(5px);
+/* Modal header */
+.modal-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 20px !important;
 }
 
-/* Phone input field styles */
-.phone-field {
+/* Modal icon - success */
+.modal-icon {
+  width: 60px !important;
+  height: 60px !important;
+  background: linear-gradient(45deg, #4fa682, #428bb8) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 15px !important;
+  animation: checkmark 0.6s ease-in-out !important;
+}
+
+.modal-icon::after {
+  content: "✓" !important;
+  color: white !important;
+  font-size: 30px !important;
+  font-weight: bold !important;
+}
+
+/* Error icon styling */
+.modal-icon.error-icon {
+  background: linear-gradient(45deg, #ff4444, #cc0000) !important;
+}
+
+.modal-icon.error-icon::after {
+  content: "✗" !important;
+  color: white !important;
+  font-size: 30px !important;
+  font-weight: bold !important;
+}
+
+/* Checkmark animation */
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Modal heading */
+.modal h2 {
+  color: var(--navy) !important;
+  margin: 0 0 15px 0 !important;
+  font-size: 1.5rem !important;
+}
+
+/* Modal paragraph */
+.modal p {
+  color: var(--slate) !important;
+  margin-bottom: 25px !important;
+  line-height: 1.6 !important;
+}
+
+/* Modal close button */
+.modal-close {
+  background: linear-gradient(45deg, #4fa682, #428bb8) !important;
+  color: white !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  border-radius: 25px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.modal-close:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(79, 166, 130, 0.4) !important;
+}
+
+/* Show modal state */
+.modal.show {
+  display: block !important;
+}
+
+/* Footer navigation links hover effect - text only */
+.footer nav a {
+  color: var(--light) !important;
+  margin: 0 10px !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  padding: 8px 16px !important;
+  transition: 
+    transform 0.3s ease,
+    color 0.3s ease !important;
+}
+
+.footer nav a:hover {
+  transform: translateY(-5px) !important;
+  color: var(--teal) !important;
+}
+
+/* Mobile responsive modal */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 20% auto !important;
+    width: 95% !important;
+    padding: 20px !important;
+  }
+  
+  .modal-icon {
+    width: 50px !important;
+    height: 50px !important;
+    margin-right: 10px !important;
+  }
+  
+  .modal-icon::after,
+  .modal-icon.error-icon::after {
+    font-size: 24px !important;
+  }
+  
+  .modal h2 {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Contact Section Styles - Modern Card Design - Single Row */
+#contact {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+#contact h2 {
+  text-align: center;
+  margin-bottom: 50px;
+  color: var(--navy);
+  font-size: 2.5rem;
+  position: relative;
+}
+
+#contact h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(45deg, var(--teal), var(--sage));
+  border-radius: 2px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Force exactly 4 columns */
+  gap: 20px; /* Reduced gap for better fit */
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+}
+
+.contact-item {
+  background: var(--light);
+  border-radius: 15px;
+  padding: 25px 20px; /* Reduced padding for better fit */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-align: center;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px; /* Ensure consistent height */
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.country-code {
-  flex: 0 0 100px;
-}
-
-.country-code select {
+.contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  padding: 15px 10px;
-  border: 2px solid var(--sage);
-  border-radius: 5px;
-  background-color: transparent;
-  color: var(--slate);
-  cursor: pointer;
-  outline: none;
+  background: linear-gradient(90deg, transparent, rgba(79, 166, 130, 0.1), transparent);
+  transition: left 0.6s;
 }
 
-.phone-input {
-  flex: 1;
-  position: relative;
-}
-
-.phone-input input {
-  width: 100%;
-}
-
-.country-code select:focus {
+.contact-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   border-color: var(--teal);
-  box-shadow: 0 0 0 1px var(--teal);
 }
 
-/* Custom select arrow */
-.country-code select {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 12px;
-  padding-right: 30px;
+.contact-item:hover::before {
+  left: 100%;
 }
 
-Glass_Heroes_Website\resources\css\index.css
-.datetime-field {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
-
-.date-input,
-.time-input {
+.contact-item i {
+  font-size: 2.2rem; /* Slightly smaller for better fit */
+  color: var(--teal);
+  margin-bottom: 15px;
+  display: block;
+  transition: all 0.4s ease;
   position: relative;
+  z-index: 1;
 }
 
-input[type="date"] {
-  width: 100%;
-  padding: 15px;
-  border: 2px solid var(--sage);
-  border-radius: 5px;
-  font-family: inherit;
+/* Icon animations on hover */
+.contact-item:hover i {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--sage);
+  animation: iconPulse 0.6s ease-in-out;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  50% {
+    transform: scale(1.4) rotate(-5deg);
+  }
+}
+
+.contact-item a {
+  color: var(--navy);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem; /* Adjusted font size */
+  transition: all 0.3s ease;
+  display: block;
+  margin-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-item a:hover {
+  color: var(--teal);
+  transform: translateY(-2px);
+}
+
+.contact-item strong {
+  color: var(--navy);
+  font-size: 1rem; /* Adjusted font size */
+  display: block;
+  margin-top: 8px;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-item:hover strong {
   color: var(--slate);
-  cursor: pointer;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.6;
-  filter: invert(0.8);
-  transition: opacity 0.2s;
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+/* Specific icon animations */
+.contact-item:nth-child(1):hover i {
+  animation: phoneRing 0.8s ease-in-out infinite;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator:hover {
-  opacity: 1;
+.contact-item:nth-child(2):hover i {
+  animation: emailBounce 0.6s ease-in-out;
+}
+
+.contact-item:nth-child(3):hover i {
+  animation: clockTick 0.5s ease-in-out infinite;
+}
+
+.contact-item:nth-child(4):hover i {
+  animation: locationPin 0.8s ease-in-out;
+}
+
+@keyframes phoneRing {
+  0%, 100% { transform: scale(1.2) rotate(0deg); }
+  25% { transform: scale(1.3) rotate(-10deg); }
+  75% { transform: scale(1.3) rotate(10deg); }
+}
+
+@keyframes emailBounce {
+  0%, 100% { transform: scale(1.2) translateY(0); }
+  50% { transform: scale(1.4) translateY(-5px); }
+}
+
+@keyframes clockTick {
+  0%, 100% { transform: scale(1.2) rotate(0deg); }
+  50% { transform: scale(1.3) rotate(10deg); }
+}
+
+@keyframes locationPin {
+  0%, 100% { transform: scale(1.2) translateY(0); }
+  25% { transform: scale(1.4) translateY(-3px); }
+  75% { transform: scale(1.3) translateY(-1px); }
+}
+
+/* Map styling */
+#contact iframe {
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+#contact iframe:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile responsive - stack on smaller screens */
+@media (max-width: 1024px) {
+  .contact-info {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  #contact {
+    padding: 60px 15px;
+  }
+  
+  .contact-info {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    gap: 20px;
+    padding: 0 10px;
+  }
+  
+  .contact-item {
+    padding: 25px 20px;
+  }
+  
+  .contact-item i {
+    font-size: 2rem;
+  }
+  
+  #contact h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .contact-item {
+    padding: 20px 15px;
+  }
+  
+  .contact-item i {
+    font-size: 1.8rem;
+  }
+  
+  .contact-item a,
+  .contact-item strong {
+    font-size: 0.9rem;
+  }
 }

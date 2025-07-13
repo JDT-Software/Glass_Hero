@@ -1,5 +1,27 @@
 {
   "dependencies": {
-    "aos": "^3.0.0-beta.6"
-  }
+    "aos": "^3.0.0-beta.6",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3"
+  },
+  "name": "glass_heroes_website",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JDT-Software/Glass_Hero.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JDT-Software/Glass_Hero/issues"
+  },
+  "homepage": "https://github.com/JDT-Software/Glass_Hero#readme",
+  "description": ""
 }
